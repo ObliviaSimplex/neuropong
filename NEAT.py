@@ -1,1 +1,1 @@
-/home/oblivia/Dropbox/PYTHONCODE/GeneticAlgorithms/NeuroWorm/NEAT.py
+../NeuroWorm/NEAT.py

@@ -42,8 +42,9 @@ class PongPhenotype(NEATnet):
 		self.exp = 0
 		self.offspring = 0
 		self.mutations = 0
+                self.inOut = inOut
 
-		super(PongPhenotype, self).__init__(inOut, neurons, synapses, initial_pop, code=code)
+		super(PongPhenotype, self).__init__(inOut, neurons, synapses, initial_pop) #, code=code)
 		if name:
 			self.name = name
 	
@@ -370,8 +371,8 @@ class GeneticAlgorithm:
 			## BAR1 HITTING THE BALL ##
 			if circle_x <= paddle1.x + 10.:
 				if circle_y >= paddle1.y - 7.5 and circle_y <= paddle1.y + 42.5:
-					if slowdown:
-						hit_sound.play()
+					#if slowdown:
+					#	hit_sound.play()
 					circle_x = 20.
 					speed_x = -speed_x
 					if varBounce:
@@ -394,8 +395,8 @@ class GeneticAlgorithm:
 			## BAR2 HITTING THE BALL ##
 			if circle_x >= paddle2.x - 15.:
 				if circle_y >= paddle2.y - 7.5 and circle_y <= paddle2.y + 42.5:
-					if slowdown:
-						hit_sound.play()
+					#if slowdown:
+					#	hit_sound.play()
 					circle_x = WIDTH-75.
 					speed_x = -speed_x
 					if varBounce:
@@ -416,8 +417,8 @@ class GeneticAlgorithm:
 
 
 			if circle_x < 5.:
-				if slowdown:
-					miss_sound.play()
+				#if slowdown:	
+                                    #miss_sound.play()
 				if mightScore:
 					paddle2.score += 1
 					mightScore = False
@@ -444,8 +445,8 @@ class GeneticAlgorithm:
 				#paddle1.y,bar_2_y = 215., 215.
 				# if the ball goes past the right edge of the playing field, then bar1 gets a point.
 			elif circle_x > WIDTH-5.:
-				if slowdown:
-					miss_sound.play()
+			#	if slowdown:
+			#		miss_sound.play()
 				if mightScore:
 					paddle1.score += 1
 					mightScore = False
@@ -766,10 +767,10 @@ def getYesNoAnswer(nameOfValue):
 
 def main():
 	pygame.init()
-	pygame.mixer.init()
-	global hit_sound, miss_sound
-	hit_sound = pygame.mixer.Sound("soundEffects/Bloob8Bit.wav")
-	miss_sound = pygame.mixer.Sound("")
+	# pygame.mixer.init()
+	# global hit_sound, miss_sound
+	#hit_sound = pygame.mixer.Sound("soundEffects/Bloob8Bit.wav")
+	#miss_sound = pygame.mixer.Sound("")
 	GA = GeneticAlgorithm()
 	loadpop = getYesNoAnswer("Load population")
 
